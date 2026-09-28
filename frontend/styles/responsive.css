@@ -1,0 +1,476 @@
+/* ---------------------------------------------------------------------------
+   Responsive rules. Organised by breakpoint, then by component group.
+   Breakpoints: 1440+ large desktop · 1200+ desktop · 768–1199 tablet · <768 mobile
+--------------------------------------------------------------------------- */
+
+
+/* --------------------------------------------------------------------------
+   Large desktop (1440px+): keep the shell balanced on wide monitors.
+-------------------------------------------------------------------------- */
+
+@media (min-width: 1440px) {
+    .content {
+        padding-left: var(--space-10);
+        padding-right: var(--space-10);
+    }
+    .top-header,
+    .status-banner {
+        padding-left: var(--space-10);
+        padding-right: var(--space-10);
+    }
+    .app-footer {
+        padding-left: var(--space-10);
+        padding-right: var(--space-10);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Desktop (1200px+): keep tables securely contained.
+-------------------------------------------------------------------------- */
+
+@media (min-width: 1200px) {
+    .table-region {
+        overflow-x: auto;
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Tablet and below (1023px): navigation becomes an overlay drawer.
+-------------------------------------------------------------------------- */
+
+@media (max-width: 1023px) {
+    .app-shell {
+        flex-direction: column;
+    }
+    .app-main {
+        flex: 1 1 100%;
+        width: 100%;
+        min-width: 0;
+        margin-left: 0;
+    }
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        height: 100dvh;
+        width: min(var(--sidebar-width), 85vw);
+        flex: none;
+        z-index: 50;
+        transform: translateX(-102%);
+        box-shadow: var(--shadow-lg);
+        transition: transform var(--duration-slow) var(--ease-out);
+        padding-top: var(--space-2);
+    }
+    .sidebar[data-open='true'] {
+        transform: translateX(0);
+    }
+    .sidebar-close {
+        display: inline-flex;
+    }
+    .nav-scrim {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 45;
+        background: var(--scrim);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--duration) var(--ease-out);
+    }
+    .nav-scrim[data-open='true'] {
+        opacity: 1;
+        pointer-events: auto;
+    }
+    .header-menu {
+        display: inline-flex;
+    }
+    .content {
+        padding: var(--space-6) var(--space-6) var(--space-12);
+    }
+    .top-header,
+    .status-banner {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+    }
+    .app-footer {
+        padding-left: var(--space-6);
+        padding-right: var(--space-6);
+    }
+    .overview-grid,
+    .split-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .page-title {
+        letter-spacing: -0.024em;
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Tablet compact (1023px and below).
+-------------------------------------------------------------------------- */
+
+@media (max-width: 1023px) {
+    .content {
+        padding: var(--space-5) var(--space-5) var(--space-12);
+    }
+    .top-header,
+    .status-banner {
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
+    }
+    .app-footer {
+        padding-left: var(--space-5);
+        padding-right: var(--space-5);
+    }
+    .dataset-card {
+        padding: var(--space-4);
+    }
+    .drawer-body {
+        padding: var(--space-5);
+    }
+    .drawer-header {
+        padding: var(--space-4) var(--space-5);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Mobile (767px and below).
+-------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+    /* Header ------------------------------------------------------------- */
+    .top-header,
+    .status-banner {
+        padding-left: var(--space-4);
+        padding-right: var(--space-4);
+    }
+    .top-header {
+        gap: var(--space-2);
+    }
+    .header-context {
+        display: none;
+    }
+    .header-brand {
+        display: flex;
+        min-width: 0;
+    }
+    .header-brand .brand-word {
+        font-size: var(--text-base);
+    }
+    .header-avatar {
+        display: none;
+    }
+    .icon-button {
+        width: 40px;
+        height: 40px;
+    }
+    .status-banner {
+        font-size: 11.5px;
+        line-height: 1.4;
+    }
+    /* Content scaffolding -------------------------------------------------- */
+    .content {
+        padding: var(--space-5) var(--space-4) var(--space-10);
+    }
+    .page-heading {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-4);
+        margin-bottom: var(--space-6);
+    }
+    .page-description {
+        font-size: var(--text-base);
+        margin-top: var(--space-1);
+    }
+    .page-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+    .page-actions .button {
+        width: 100%;
+        height: 40px;
+    }
+    .page-actions .select {
+        width: 100%;
+        min-width: 0;
+        height: 40px;
+    }
+    .page-actions:has(> :only-child) {
+        grid-template-columns: 1fr;
+    }
+    .section {
+        margin-top: var(--space-6);
+    }
+    .section-head {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+        margin-bottom: var(--space-3);
+    }
+    .section-actions {
+        justify-content: flex-start;
+    }
+    /* Buttons and fields ---------------------------------------------------- */
+    .button {
+        height: 40px;
+        padding: 0 16px;
+    }
+    .button-sm {
+        height: 40px;
+        padding: 0 14px;
+    }
+    .input,
+    .select {
+        height: 40px;
+    }
+    /* Metrics ---------------------------------------------------------------- */
+    .metric-grid {
+        gap: var(--space-3);
+    }
+    .metric-card {
+        min-height: 0;
+        padding: var(--space-3) var(--space-4) var(--space-4);
+        gap: var(--space-1);
+    }
+    .metric-value {
+        font-size: 24px;
+    }
+    /* Workflow: stacked ------------------------------------------------------ */
+    .workflow {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+    .workflow-step {
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr);
+        align-items: center;
+        row-gap: 2px;
+        min-height: 34px;
+        padding-bottom: 4px;
+    }
+    .workflow-step::after {
+        grid-column: 1;
+        grid-row: 2;
+        flex: none;
+        width: 1px;
+        height: 14px;
+        min-width: 0;
+        margin: 0 0 0 10px;
+        justify-self: start;
+    }
+    /* Recent runs ------------------------------------------------------------- */
+    .run-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: var(--space-1) var(--space-3);
+        padding: var(--space-3) var(--space-4);
+    }
+    .run-row> :nth-child(3) {
+        grid-column: 1 / -1;
+    }
+    /* Upload ------------------------------------------------------------------ */
+    .source-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-3);
+    }
+    .upload-zone {
+        min-height: 104px;
+    }
+    .schema-footer {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+        padding: var(--space-4);
+    }
+    .schema-footer .inline-actions {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    }
+    .schema-footer .button {
+        width: 100%;
+    }
+    /* Run --------------------------------------------------------------------- */
+    .run-summary,
+    .run-stats {
+        padding: var(--space-4);
+    }
+    .run-summary .button {
+        width: 100%;
+    }
+    /* Tables become cards ------------------------------------------------------ */
+    .table-region {
+        display: none;
+    }
+    .record-card-list {
+        display: grid;
+    }
+    .data-panel .record-card-list {
+        padding: var(--space-3);
+        gap: var(--space-3);
+    }
+    .data-toolbar {
+        padding: var(--space-3);
+        gap: var(--space-2);
+    }
+    .data-toolbar .search-field {
+        flex: 1 0 100%;
+    }
+    .data-toolbar .input,
+    .data-toolbar .select {
+        flex: 1 1 calc(50% - var(--space-2));
+        min-width: 0;
+        width: auto;
+    }
+    .toolbar-count {
+        flex: 1 0 100%;
+        margin-left: 0;
+    }
+    .toolbar-run {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+    }
+    .toolbar-run .select {
+        max-width: none;
+        flex: 0 0 auto;
+    }
+    .pagination {
+        flex-direction: column;
+        align-items: stretch;
+        gap: var(--space-3);
+        text-align: center;
+    }
+    .pagination-controls {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    /* Drawer becomes a full-screen sheet ---------------------------------------- */
+    .detail-drawer {
+        width: 100vw;
+        border-left: none;
+        animation-name: drawer-in-mobile;
+    }
+    .drawer-body {
+        padding: var(--space-4);
+        gap: var(--space-4);
+    }
+    .compare-grid,
+    .detail-fields {
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-3);
+    }
+    /* Validation ---------------------------------------------------------------- */
+    .validation-summary {
+        align-items: flex-start;
+        padding: var(--space-4);
+    }
+    /* Footer --------------------------------------------------------------------- */
+    .app-footer {
+        gap: var(--space-2) var(--space-4);
+        padding: var(--space-4);
+        font-size: 11.5px;
+    }
+    .app-footer span:last-child {
+        margin-left: 0;
+        flex: 1 0 100%;
+    }
+    .toast {
+        left: var(--space-4);
+        right: var(--space-4);
+        max-width: none;
+        transform: translateY(12px);
+    }
+    .toast-visible {
+        transform: translateY(0);
+    }
+}
+
+@keyframes drawer-in-mobile {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Small mobile (479px and below).
+-------------------------------------------------------------------------- */
+
+@media (max-width: 479px) {
+    .brand-sub {
+        display: none;
+    }
+    .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-2);
+    }
+    .metric-label svg {
+        display: none;
+    }
+    .metric-value {
+        font-size: 22px;
+    }
+    .detail-fields {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .run-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--space-3);
+    }
+    .schema-footer .inline-actions {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   Tiny mobile (359px and below): 320px support.
+-------------------------------------------------------------------------- */
+
+@media (max-width: 359px) {
+    .content {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+    }
+    .top-header,
+    .status-banner {
+        padding-left: var(--space-3);
+        padding-right: var(--space-3);
+    }
+    .status-pill {
+        padding: 0 8px;
+        letter-spacing: 0.02em;
+    }
+    .metric-card {
+        padding: var(--space-3);
+    }
+    .metric-label {
+        font-size: 11px;
+    }
+    .metric-value {
+        font-size: 20px;
+    }
+    .dataset-card {
+        padding: var(--space-3);
+    }
+    .page-actions {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}

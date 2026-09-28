@@ -1,0 +1,260 @@
+/* ---------------------------------------------------------------------------
+   Feedback: empty, error and loading states, toasts, status banner.
+--------------------------------------------------------------------------- */
+
+/* Empty state ------------------------------------------------------------ */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-10) var(--space-6);
+  text-align: center;
+}
+
+.empty-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+  color: var(--text-muted);
+}
+
+.empty-title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.empty-description {
+  max-width: 46ch;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.empty-action {
+  margin-top: var(--space-1);
+}
+
+/* Error state ------------------------------------------------------------ */
+.error-state {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--error);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.error-state-icon {
+  color: var(--error);
+  margin-top: 2px;
+  flex: none;
+}
+
+.error-state-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.error-state-title {
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.error-state-message {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.error-state-action {
+  margin-top: var(--space-3);
+}
+
+/* Inline notice ----------------------------------------------------------- */
+.notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  padding: 10px var(--space-4);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.notice strong {
+  color: var(--text-primary);
+  font-weight: var(--weight-semibold);
+}
+
+.notice-error {
+  background: var(--error-soft);
+  border-color: color-mix(in srgb, var(--error) 24%, transparent);
+  color: var(--error);
+}
+
+.notice-warning {
+  background: var(--warning-soft);
+  border-color: color-mix(in srgb, var(--warning) 26%, transparent);
+  color: var(--warning);
+}
+
+/* Status banner (resolver / connectivity) --------------------------------- */
+.status-banner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 34px;
+  padding: 7px var(--space-8);
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+  font-size: var(--text-xs);
+  color: var(--text-secondary);
+}
+
+.status-banner strong {
+  color: var(--text-primary);
+  font-weight: var(--weight-semibold);
+}
+
+.status-banner[data-tone='error'] {
+  background: var(--error-soft);
+  color: var(--error);
+}
+
+.status-banner[data-tone='error'] strong {
+  color: var(--error);
+}
+
+.status-banner-icon {
+  flex: none;
+  color: var(--accent);
+}
+
+.status-banner[data-tone='error'] .status-banner-icon {
+  color: var(--error);
+}
+
+/* Loading state ----------------------------------------------------------- */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-12) var(--space-6);
+  color: var(--text-muted);
+  font-size: var(--text-sm);
+}
+
+/* Skeleton helpers -------------------------------------------------------- */
+.skeleton-card {
+  display: grid;
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.skeleton-line {
+  height: 10px;
+  width: 100%;
+}
+
+.skeleton-line-sm {
+  height: 10px;
+  width: 55%;
+}
+
+.skeleton-value {
+  height: 26px;
+  width: 40%;
+}
+
+.skeleton-table {
+  display: grid;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.data-panel .skeleton-table {
+  border: none;
+  border-radius: 0;
+}
+
+.skeleton-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  height: 52px;
+  padding: 0 var(--space-5);
+  background: var(--surface);
+}
+
+.skeleton-row .skeleton {
+  height: 10px;
+  flex: 1;
+}
+
+/* Toast -------------------------------------------------------------------- */
+.toast {
+  position: fixed;
+  z-index: 80;
+  left: 50%;
+  bottom: var(--space-6);
+  max-width: calc(100vw - 32px);
+  padding: 10px 14px;
+  background: var(--surface-3);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 12px);
+  transition:
+    opacity var(--duration) var(--ease-out),
+    transform var(--duration) var(--ease-out);
+}
+
+.toast-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+  pointer-events: auto;
+}
+
+.toast-error {
+  border-color: color-mix(in srgb, var(--error) 40%, transparent);
+  color: var(--error);
+}
+
+@media (min-width: 768px) {
+  .toast {
+    left: auto;
+    right: var(--space-6);
+    transform: translateY(12px);
+  }
+
+  .toast-visible {
+    transform: translateY(0);
+  }
+}

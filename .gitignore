@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.tsbuildinfo
+.DS_Store
+.venv/
+venv/
+backend/storage/
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.env.local
+.env
+*.log

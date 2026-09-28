@@ -1,0 +1,243 @@
+/* ---------------------------------------------------------------------------
+   RESOMESH Design Tokens
+   Unified token system for Light, Dark, and signature RESOMESH-Theme.
+   Values defined per "Full Light Fluid Bubble UI System" specification.
+--------------------------------------------------------------------------- */
+
+:root {
+    /* Typography --------------------------------------------------------- */
+    --font-ui: var(--font-inter, 'Inter'), 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-display: var(--font-manrope, 'Manrope'), 'Manrope', system-ui, sans-serif;
+    --font-mono: var(--font-jetbrains, 'JetBrains Mono'), 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    --text-2xs: 11px;
+    --text-xs: 12px;
+    --text-sm: 13.5px;
+    --text-base: 14.5px;
+    --text-md: 15.5px;
+    --text-lg: 17px;
+    --text-section: clamp(20px, 1.2vw + 16px, 24px);
+    --text-page: clamp(30px, 1.6vw + 20px, 38px);
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-semibold: 600;
+    --weight-bold: 700;
+    /* Spacing (4px base) -------------------------------------------------- */
+    --space-0: 0;
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-7: 28px;
+    --space-8: 32px;
+    --space-10: 40px;
+    --space-12: 48px;
+    --space-16: 64px;
+    /* Radius System: small controls 12px, cards 20-24px, pills 999px ------ */
+    --radius-xs: 4px;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 24px;
+    --radius-2xl: 28px;
+    --radius-full: 999px;
+    /* Motion & Physics: 150-250ms interactive, 200-300ms transitions ----- */
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-soft: cubic-bezier(0.25, 0.8, 0.25, 1);
+    --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+    --duration-fast: 180ms;
+    --duration: 240ms;
+    --duration-slow: 360ms;
+    --motion-fast: 160ms;
+    --motion-normal: 220ms;
+    --motion-slow: 340ms;
+    /* Layout -------------------------------------------------------------- */
+    --sidebar-width: 252px;
+    --header-height: 60px;
+    --content-max: 1480px;
+}
+
+
+/* --------------------------------------------------------------------------
+   Light Mode (Neutral Daylight Laboratory)
+-------------------------------------------------------------------------- */
+
+:root,
+[data-theme='light'] {
+    color-scheme: light;
+    --background: #F5F3EF;
+    --background-secondary: #ECE9E3;
+    --surface: #FFFFFF;
+    --surface-1: #FFFFFF;
+    --surface-2: #ECE9E3;
+    --surface-3: #FAF9F6;
+    --surface-soft: #FAF9F6;
+    --surface-elevated: #FAF9F6;
+    --surface-hover: #F8F7F4;
+    --surface-glass: rgba(255, 255, 255, 0.85);
+    --border: rgba(25, 25, 25, 0.08);
+    --border-soft: rgba(25, 25, 25, 0.05);
+    --border-strong: rgba(25, 25, 25, 0.14);
+    --text-primary: #171717;
+    --text-secondary: #6F6B64;
+    --text-muted: #9B968E;
+    --text-on-accent: #FFFFFF;
+    --accent: #8B7CF6;
+    --accent-hover: #7C6CE6;
+    --accent-active: #6F63D9;
+    --accent-soft: rgba(139, 124, 246, 0.10);
+    --accent-soft-strong: rgba(139, 124, 246, 0.18);
+    --accent-border: rgba(139, 124, 246, 0.30);
+    --accent-gradient: linear-gradient(135deg, #8B7CF6 0%, #B3A8FF 100%);
+    --accent-2: #A69BF8;
+    --success: #16A34A;
+    --success-soft: rgba(22, 163, 74, 0.09);
+    --warning: #D97706;
+    --warning-soft: rgba(217, 119, 6, 0.09);
+    --error: #DC2626;
+    --error-soft: rgba(220, 38, 38, 0.09);
+    --danger: #DC2626;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 8px 24px -6px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+    --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.08);
+    --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    --scrim: rgba(23, 23, 23, 0.35);
+    --skeleton-base: #E8E5DF;
+    --skeleton-sheen: rgba(255, 255, 255, 0.75);
+    --page-glow: none;
+}
+
+
+/* --------------------------------------------------------------------------
+   Dark Mode (Warm Graphite Engineering Workspace - Never Pure Black)
+-------------------------------------------------------------------------- */
+
+[data-theme='dark'] {
+    color-scheme: dark;
+    --background: #11110F;
+    --background-secondary: #171714;
+    --surface: #1D1C19;
+    --surface-1: #1D1C19;
+    --surface-2: #23221F;
+    --surface-3: #2A2925;
+    --surface-soft: #23221F;
+    --surface-elevated: #23221F;
+    --surface-hover: #262522;
+    --surface-glass: rgba(29, 28, 25, 0.85);
+    --border: rgba(255, 255, 255, 0.08);
+    --border-soft: rgba(255, 255, 255, 0.05);
+    --border-strong: rgba(255, 255, 255, 0.14);
+    --text-primary: #F5F3EF;
+    --text-secondary: #AAA69E;
+    --text-muted: #77736C;
+    --text-on-accent: #11110F;
+    --accent: #9B8CFF;
+    --accent-hover: #A99CFF;
+    --accent-active: #8A7BFF;
+    --accent-soft: rgba(155, 140, 255, 0.12);
+    --accent-soft-strong: rgba(155, 140, 255, 0.22);
+    --accent-border: rgba(155, 140, 255, 0.36);
+    --accent-gradient: linear-gradient(135deg, #9B8CFF 0%, #C4B5FD 100%);
+    --accent-2: #A69BF8;
+    --success: #34D399;
+    --success-soft: rgba(52, 211, 153, 0.12);
+    --warning: #FBBF24;
+    --warning-soft: rgba(251, 191, 36, 0.12);
+    --error: #F87171;
+    --error-soft: rgba(248, 113, 113, 0.12);
+    --danger: #F87171;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 8px 24px -6px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 20px 40px -12px rgba(0, 0, 0, 0.70);
+    --shadow-soft: 0 4px 20px -2px rgba(0, 0, 0, 0.45);
+    --scrim: rgba(10, 10, 8, 0.70);
+    --skeleton-base: #23221F;
+    --skeleton-sheen: rgba(255, 255, 255, 0.06);
+    --page-glow: radial-gradient(1100px 720px at 80% -10%, rgba(155, 140, 255, 0.07), transparent 60%);
+}
+
+
+/* --------------------------------------------------------------------------
+   RESOMESH-Theme (Full Light Fluid Bubble UI System)
+   Pure white luminous canvas + noticeable pastel atmosphere (blue/pink/green/lavender/peach)
+-------------------------------------------------------------------------- */
+
+[data-theme='resomesh'] {
+    color-scheme: light;
+    /* Base Canvas & Surfaces */
+    --background: #FFFFFF;
+    --background-secondary: #F8FAFC;
+    --surface: rgba(255, 255, 255, 0.84);
+    --surface-1: rgba(255, 255, 255, 0.84);
+    --surface-2: rgba(241, 245, 249, 0.75);
+    --surface-3: #F8FAFC;
+    --surface-soft: rgba(248, 250, 252, 0.75);
+    --surface-elevated: #FFFFFF;
+    --surface-hover: #FFFFFF;
+    --surface-glass: rgba(255, 255, 255, 0.72);
+    /* Coordinated Pastel Palette (Visibly Pastel, Fresh, Luminous) */
+    --resomesh-blue: #38BDF8;
+    --resomesh-blue-soft: #E0F2FE;
+    --resomesh-blue-surface: rgba(224, 242, 254, 0.75);
+    --resomesh-blue-border: rgba(56, 189, 248, 0.32);
+    --resomesh-blue-text: #0284C7;
+    --resomesh-pink: #F472B6;
+    --resomesh-pink-soft: #FCE7F3;
+    --resomesh-pink-surface: rgba(252, 231, 243, 0.75);
+    --resomesh-pink-border: rgba(244, 114, 182, 0.32);
+    --resomesh-pink-text: #DB2777;
+    --resomesh-green: #34D399;
+    --resomesh-green-soft: #DCFCE7;
+    --resomesh-green-surface: rgba(220, 252, 231, 0.75);
+    --resomesh-green-border: rgba(52, 211, 153, 0.32);
+    --resomesh-green-text: #059669;
+    --resomesh-lavender: #818CF8;
+    --resomesh-lavender-soft: #EDE9FE;
+    --resomesh-lavender-surface: rgba(237, 233, 254, 0.75);
+    --resomesh-lavender-border: rgba(129, 140, 248, 0.32);
+    --resomesh-lavender-text: #4F46E5;
+    --resomesh-peach: #FB923C;
+    --resomesh-peach-soft: #FFEDD5;
+    --resomesh-peach-surface: rgba(255, 237, 213, 0.75);
+    --resomesh-peach-border: rgba(251, 146, 60, 0.32);
+    --resomesh-peach-text: #EA580C;
+    /* Primary Accent (Soft Sky Blue -> Lavender Gradient) */
+    --accent: #6366F1;
+    --accent-hover: #4F46E5;
+    --accent-active: #4338CA;
+    --accent-soft: rgba(99, 102, 241, 0.12);
+    --accent-soft-strong: rgba(99, 102, 241, 0.20);
+    --accent-border: rgba(99, 102, 241, 0.30);
+    --accent-gradient: linear-gradient(135deg, #38BDF8 0%, #818CF8 50%, #C084FC 100%);
+    --accent-2: #38BDF8;
+    /* Borders & Subtle Insets */
+    --border: rgba(148, 163, 184, 0.18);
+    --border-soft: rgba(148, 163, 184, 0.10);
+    --border-strong: rgba(99, 102, 241, 0.26);
+    /* High Legibility Typography (Deep Slate, never faint gray) */
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    --text-on-accent: #FFFFFF;
+    /* Semantic Pastel Badges */
+    --success: #059669;
+    --success-soft: #DCFCE7;
+    --warning: #D97706;
+    --warning-soft: #FEF3C7;
+    --error: #E11D48;
+    --error-soft: #FFE4E6;
+    --danger: #E11D48;
+    /* Delicate Airy Shadows */
+    --shadow-sm: 0 2px 8px -1px rgba(99, 102, 241, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 8px 24px -4px rgba(99, 102, 241, 0.10), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
+    --shadow-lg: 0 20px 48px -10px rgba(99, 102, 241, 0.14);
+    --shadow-soft: 0 4px 20px -2px rgba(56, 189, 248, 0.10);
+    --scrim: rgba(15, 23, 42, 0.25);
+    --skeleton-base: #E2E8F0;
+    --skeleton-sheen: rgba(255, 255, 255, 0.90);
+    /* Atmospheric Global Illumination Gradient (Blue top-left, Pink right, Mint/Lavender/Peach bottom) */
+    --page-glow: radial-gradient(1100px 750px at 2% 0%, rgba(56, 189, 248, 0.22) 0%, transparent 60%), radial-gradient(1000px 700px at 98% 8%, rgba(244, 114, 182, 0.18) 0%, transparent 58%), radial-gradient(900px 650px at 50% 98%, rgba(52, 211, 153, 0.16) 0%, transparent 58%), radial-gradient(800px 550px at 90% 92%, rgba(251, 146, 60, 0.14) 0%, transparent 56%);
+}
