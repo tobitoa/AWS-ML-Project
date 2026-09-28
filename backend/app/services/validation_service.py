@@ -46,7 +46,11 @@ def validate_run(run_id: str) -> dict:
             "rows_validated": 0,
         }
 
-    input_dir = RUNS_DIR / run_id / "inputs"
+    input_dir = RUNS_DIR / run_id / "input"
+    if not input_dir.is_dir():
+        input_dir = RUNS_DIR / run_id / "inputs"
+    if not input_dir.is_dir():
+        input_dir = UPLOADS_DIR
     errors: list[str] = []
     warnings: list[str] = []
     checks: list[dict] = []

@@ -214,11 +214,15 @@ class AwsMainMLPipeline:
         output_dir: Union[str, Path],
         test_dir: Optional[Union[str, Path]] = None,
         ground_truth: Optional[dict[str, Union[str, set[str]]]] = None,
+        stage_callback: Optional[Any] = None,
+        **kwargs: Any,
     ) -> PipelineOutput:
         """
         Execute full Entity Resolution matching pipeline using aws-main-ml logic.
         Writes matching_results.tsv and candidate_pairs.tsv with exact challenge schemas.
         """
+        if stage_callback:
+            stage_callback("preprocessing", "Normalizing entity sources and building inverted indexes")
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
         test_path = Path(test_dir) if test_dir else output_path
